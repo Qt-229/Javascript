@@ -1,5 +1,51 @@
-<div id="image">Hover over an image below to display here.</div>
-
-<img class="preview" src="https://placekitten.com/80/80" alt="Cute kitten 1" onmouseover="upDate(this)" onmouseout="undo()">
-<img class="preview" src="https://placekitten.com/81/80" alt="Cute kitten 2" onmouseover="upDate(this)" onmouseout="undo()">
-<img class="preview" src="https://placekitten.com/82/80" alt="Cute kitten 3" onmouseover="upDate(this)" onmouseout="undo()">
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #image {
+      width: 400px;
+      height: 200px;
+      border: 2px solid #000;
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      line-height: 200px;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .preview { cursor: pointer; margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <div id="image">Hover over an image below to display here.</div>
+  <img class="preview"
+       src="https://placekitten.com/80/80"
+       alt="Kitten 1"
+       onmouseover="upDate(this)"
+       onmouseout="undo()">
+  <img class="preview"
+       src="https://placekitten.com/81/80"
+       alt="Kitten 2"
+       onmouseover="upDate(this)"
+       onmouseout="undo()">
+  <img class="preview"
+       src="https://placekitten.com/82/80"
+       alt="Kitten 3"
+       onmouseover="upDate(this)"
+       onmouseout="undo()">
+  <script>
+    function upDate(previewPic) {
+      console.log('upDate triggered', previewPic.src, previewPic.alt);
+      var imageDiv = document.getElementById('image');
+      imageDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+      imageDiv.innerHTML = previewPic.alt;
+    }
+    function undo() {
+      console.log('undo triggered');
+      var imageDiv = document.getElementById('image');
+      imageDiv.style.backgroundImage = "url('')";
+      imageDiv.innerHTML = "Hover over an image below to display here.";
+    }
+  </script>
+</body>
+</html>
